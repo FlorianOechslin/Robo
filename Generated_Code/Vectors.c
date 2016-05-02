@@ -6,7 +6,7 @@
 **     Version     : Component 01.014, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2016-02-24, 11:10, # CodeGen: 0
+**     Date/Time   : 2016-04-26, 08:43, # CodeGen: 6
 **     Abstract    :
 **
 **     Settings    :
@@ -55,6 +55,72 @@
 */         
 
   #include "Cpu.h"
+  #include "LEDPin1.h"
+  #include "BitIoLdd1.h"
+  #include "LEDPin2.h"
+  #include "BitIoLdd2.h"
+  #include "WAIT1.h"
+  #include "CS1.h"
+  #include "HF1.h"
+  #include "PTA.h"
+  #include "SW1.h"
+  #include "ExtIntLdd1.h"
+  #include "KSDK1.h"
+  #include "BT1.h"
+  #include "Serial1.h"
+  #include "ASerialLdd2.h"
+  #include "CLS1.h"
+  #include "UTIL1.h"
+  #include "BUZ1.h"
+  #include "BitIoLdd4.h"
+  #include "RTT1.h"
+  #include "SYS1.h"
+  #include "AS1.h"
+  #include "ASerialLdd1.h"
+  #include "Q4CRight.h"
+  #include "C12.h"
+  #include "BitIoLdd18.h"
+  #include "C22.h"
+  #include "BitIoLdd19.h"
+  #include "MOTTU.h"
+  #include "DIRL.h"
+  #include "BitIoLdd5.h"
+  #include "PWMR.h"
+  #include "PwmLdd2.h"
+  #include "DIRR.h"
+  #include "BitIoLdd6.h"
+  #include "PWML.h"
+  #include "PwmLdd3.h"
+  #include "QuadInt.h"
+  #include "TimerIntLdd2.h"
+  #include "TU_QuadInt.h"
+  #include "TU_MCP4728.h"
+  #include "MCP4728_LDAC.h"
+  #include "BitIoLdd7.h"
+  #include "MCP4728_RDY.h"
+  #include "BitIoLdd8.h"
+  #include "Q4CLeft.h"
+  #include "C11.h"
+  #include "BitIoLdd16.h"
+  #include "C21.h"
+  #include "BitIoLdd17.h"
+  #include "LED_IR.h"
+  #include "LEDpin3.h"
+  #include "BitIoLdd15.h"
+  #include "RefCnt.h"
+  #include "IR1.h"
+  #include "BitIoLdd9.h"
+  #include "IR2.h"
+  #include "BitIoLdd10.h"
+  #include "IR3.h"
+  #include "BitIoLdd11.h"
+  #include "IR4.h"
+  #include "BitIoLdd12.h"
+  #include "IR5.h"
+  #include "BitIoLdd13.h"
+  #include "IR6.h"
+  #include "BitIoLdd14.h"
+  #include "FRTOS1.h"
   #include "Events.h"
 
 
@@ -77,7 +143,7 @@
     {
     (tIsrFunc)&__thumb_startup,        /* 0x01  0x00000004   -   ivINT_Initial_Program_Counter  used by PE */
     (tIsrFunc)&Cpu_INT_NMIInterrupt,   /* 0x02  0x00000008   -2   ivINT_NMI                      used by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x03  0x0000000C   -1   ivINT_Hard_Fault               unused by PE */
+    (tIsrFunc)&HF1_HardFaultHandler,   /* 0x03  0x0000000C   -1   ivINT_Hard_Fault               used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x04  0x00000010   -   ivINT_Mem_Manage_Fault         unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x05  0x00000014   -   ivINT_Bus_Fault                unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x06  0x00000018   -   ivINT_Usage_Fault              unused by PE */
@@ -85,11 +151,11 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x08  0x00000020   -   ivINT_Reserved8                unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x09  0x00000024   -   ivINT_Reserved9                unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x0A  0x00000028   -   ivINT_Reserved10               unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x0B  0x0000002C   -   ivINT_SVCall                   unused by PE */
+    (tIsrFunc)&vPortSVCHandler,        /* 0x0B  0x0000002C   -   ivINT_SVCall                   used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x0C  0x00000030   -   ivINT_DebugMonitor             unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x0D  0x00000034   -   ivINT_Reserved13               unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x0E  0x00000038   -   ivINT_PendableSrvReq           unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x0F  0x0000003C   -   ivINT_SysTick                  unused by PE */
+    (tIsrFunc)&vPortPendSVHandler,     /* 0x0E  0x00000038   -   ivINT_PendableSrvReq           used by PE */
+    (tIsrFunc)&vPortTickHandler,       /* 0x0F  0x0000003C   -   ivINT_SysTick                  used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x10  0x00000040   -   ivINT_DMA0                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x11  0x00000044   -   ivINT_DMA1                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x12  0x00000048   -   ivINT_DMA2                     unused by PE */
@@ -121,10 +187,10 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2C  0x000000B0   -   ivINT_I2S0_Tx                  unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2D  0x000000B4   -   ivINT_I2S0_Rx                  unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x2E  0x000000B8   -   ivINT_Reserved46               unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x2F  0x000000BC   -   ivINT_UART0_RX_TX              unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x30  0x000000C0   -   ivINT_UART0_ERR                unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x31  0x000000C4   -   ivINT_UART1_RX_TX              unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x32  0x000000C8   -   ivINT_UART1_ERR                unused by PE */
+    (tIsrFunc)&ASerialLdd1_Interrupt,  /* 0x2F  0x000000BC   8   ivINT_UART0_RX_TX              used by PE */
+    (tIsrFunc)&ASerialLdd1_Interrupt,  /* 0x30  0x000000C0   8   ivINT_UART0_ERR                used by PE */
+    (tIsrFunc)&ASerialLdd2_Interrupt,  /* 0x31  0x000000C4   8   ivINT_UART1_RX_TX              used by PE */
+    (tIsrFunc)&ASerialLdd2_Interrupt,  /* 0x32  0x000000C8   8   ivINT_UART1_ERR                used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x33  0x000000CC   -   ivINT_UART2_RX_TX              unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x34  0x000000D0   -   ivINT_UART2_ERR                unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x35  0x000000D4   -   ivINT_UART3_RX_TX              unused by PE */
@@ -139,7 +205,7 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x3E  0x000000F8   -   ivINT_RTC                      unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x3F  0x000000FC   -   ivINT_RTC_Seconds              unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x40  0x00000100   -   ivINT_PIT0                     unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x41  0x00000104   -   ivINT_PIT1                     unused by PE */
+    (tIsrFunc)&TU_QuadInt_Interrupt,   /* 0x41  0x00000104   8   ivINT_PIT1                     used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x42  0x00000108   -   ivINT_PIT2                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x43  0x0000010C   -   ivINT_PIT3                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x44  0x00000110   -   ivINT_PDB0                     unused by PE */
@@ -149,7 +215,7 @@
     (tIsrFunc)&Cpu_Interrupt,          /* 0x48  0x00000120   -   ivINT_DAC0                     unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x49  0x00000124   -   ivINT_MCG                      unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x4A  0x00000128   -   ivINT_LPTMR0                   unused by PE */
-    (tIsrFunc)&Cpu_Interrupt,          /* 0x4B  0x0000012C   -   ivINT_PORTA                    unused by PE */
+    (tIsrFunc)&Cpu_ivINT_PORTA,        /* 0x4B  0x0000012C   8   ivINT_PORTA                    used by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x4C  0x00000130   -   ivINT_PORTB                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x4D  0x00000134   -   ivINT_PORTC                    unused by PE */
     (tIsrFunc)&Cpu_Interrupt,          /* 0x4E  0x00000138   -   ivINT_PORTD                    unused by PE */
