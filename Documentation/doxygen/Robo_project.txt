@@ -56,6 +56,10 @@
 - \subpage BitIoLdd12
 - \subpage BitIoLdd13
 - \subpage BitIoLdd14
+- \subpage SMasterLdd1
+- \subpage BitIoLdd20
+- \subpage BitIoLdd21
+- \subpage ExtIntLdd2
 
 */
 

@@ -106,7 +106,8 @@ static void StateMachine(void) {
 
     case STATE_TURN:
       #if PL_CONFIG_HAS_LINE_MAZE
-      /*! \todo Handle maze turning? */
+    	TURN_Turn(TURN_LEFT180, NULL);
+    	LF_currState = STATE_FOLLOW_SEGMENT;/*! \todo Handle maze turning? */
       #endif /* PL_CONFIG_HAS_LINE_MAZE */
       break;
 
@@ -117,7 +118,7 @@ static void StateMachine(void) {
       break;
     case STATE_STOP:
       SHELL_SendString("Stopped!\r\n");
-      DRV_SetMode(DRV_MODE_STOP);
+      //DRV_SetMode(DRV_MODE_STOP);
 #if PL_CONFIG_HAS_TURN
       TURN_Turn(TURN_STOP, NULL);
 #endif

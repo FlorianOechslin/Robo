@@ -15,18 +15,22 @@ C_SRCS += \
 ../Sources/LED.c \
 ../Sources/LineFollow.c \
 ../Sources/MCP4728.c \
+../Sources/Maze.c \
 ../Sources/Motor.c \
 ../Sources/Pid.c \
 ../Sources/Platform.c \
 ../Sources/QuadCalib.c \
+../Sources/RNet_App.c \
 ../Sources/RTOS.c \
 ../Sources/Reflectance.c \
+../Sources/Remote.c \
 ../Sources/Sem.c \
 ../Sources/Shell.c \
 ../Sources/ShellQueue.c \
 ../Sources/Tacho.c \
 ../Sources/Timer.c \
 ../Sources/Trigger.c \
+../Sources/Turn.c \
 ../Sources/main.c 
 
 OBJS += \
@@ -41,18 +45,22 @@ OBJS += \
 ./Sources/LED.o \
 ./Sources/LineFollow.o \
 ./Sources/MCP4728.o \
+./Sources/Maze.o \
 ./Sources/Motor.o \
 ./Sources/Pid.o \
 ./Sources/Platform.o \
 ./Sources/QuadCalib.o \
+./Sources/RNet_App.o \
 ./Sources/RTOS.o \
 ./Sources/Reflectance.o \
+./Sources/Remote.o \
 ./Sources/Sem.o \
 ./Sources/Shell.o \
 ./Sources/ShellQueue.o \
 ./Sources/Tacho.o \
 ./Sources/Timer.o \
 ./Sources/Trigger.o \
+./Sources/Turn.o \
 ./Sources/main.o 
 
 C_DEPS += \
@@ -67,18 +75,22 @@ C_DEPS += \
 ./Sources/LED.d \
 ./Sources/LineFollow.d \
 ./Sources/MCP4728.d \
+./Sources/Maze.d \
 ./Sources/Motor.d \
 ./Sources/Pid.d \
 ./Sources/Platform.d \
 ./Sources/QuadCalib.d \
+./Sources/RNet_App.d \
 ./Sources/RTOS.d \
 ./Sources/Reflectance.d \
+./Sources/Remote.d \
 ./Sources/Sem.d \
 ./Sources/Shell.d \
 ./Sources/ShellQueue.d \
 ./Sources/Tacho.d \
 ./Sources/Timer.d \
 ./Sources/Trigger.d \
+./Sources/Turn.d \
 ./Sources/main.d 
 
 

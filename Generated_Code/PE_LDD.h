@@ -6,7 +6,7 @@
 **     Version     : Component 01.014, Driver 01.04, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2016-04-26, 08:43, # CodeGen: 6
+**     Date/Time   : 2016-05-02, 11:24, # CodeGen: 12
 **     Abstract    :
 **
 **     Settings    :
@@ -127,6 +127,16 @@
 #include "IR6.h"
 #include "BitIoLdd14.h"
 #include "FRTOS1.h"
+#include "RNET1.h"
+#include "RF1.h"
+#include "CE1.h"
+#include "BitIoLdd20.h"
+#include "CSN1.h"
+#include "BitIoLdd21.h"
+#include "IRQ1.h"
+#include "ExtIntLdd2.h"
+#include "SM1.h"
+#include "SMasterLdd1.h"
 
 
 /*

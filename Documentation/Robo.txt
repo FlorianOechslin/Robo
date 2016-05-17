@@ -945,6 +945,96 @@ Module "FRTOS1"    (component FreeRTOS)
    - FRTOS1_Init -Low level initialization routine called from startup code. This method ensures that the tick timer is  not 
                 enabled.
 
+Module "RNET1"     (component RNet)
+   - RNET1_SetChannel -Sets the radio channel
+   - RNET1_Process -Processes the Radio Rx and Tx messages
+   - RNET1_PowerUp -Initializes and powers the radio up.
+   - RNET1_ParseCommand -Shell Command Line parser. This method is enabled/disabled depending on if you have the Shell 
+                enabled/disabled in the properties.
+   - RNET1_Init -Initializes the RNet Stack
+   - RNET1_Deinit -Deinitializes the RNet Stack
+
+Module "RF1"       (component nRF24L01)
+   - RF1_ConfigureSPI -Configures the SPI bus
+   - RF1_WriteRegister -Write a register value to the transceiver
+   - RF1_ReadRegister -Reads a register from the transceiver
+   - RF1_ReadRegisterData -Read multiple bytes from the bus.
+   - RF1_WriteRegisterData -Write multiple bytes to the bus.
+   - RF1_WriteRead -Writes a byte and reads back one byte
+   - RF1_Write -Writes a byte to the bus, without returning the byte read.
+   - RF1_GetStatus -Returns the device status byte
+   - RF1_GetStatusClrIRQ -Returns the device status byte and clears any IRQ bits in the status register.
+   - RF1_ResetStatusIRQ -Reset the given flags mask of status bits
+   - RF1_TxPayload -Send the payload to the Tx FIFO and send it
+   - RF1_RxPayload -Receive the Rx payload from the FIFO and stores it in a buffer.
+   - RF1_StopRxTx -Stops sending or receiving (sets CE pin to LOW).
+   - RF1_StartRxTx -Starts sending or receiving (sets CE pin to HIGH).
+   - RF1_EnableAutoAck -Enables Auto-Acknowledgment for the given pipe(s) (RF_EN_AA register).
+   - RF1_SetStaticPipePayload -Specifies the static payload for a pipe.
+   - RF1_EnableDynamicPayloadLength -Enables dynamic payload length for the give pipes
+   - RF1_WriteFeature -Writes the FEATURE register
+   - RF1_ReadFeature -Reads the FEATURE register
+   - RF1_ReadNofRxPayload -Returns the number of received payload bytes for the top R_RX_PAYLOAD in the RX FIFO
+   - RF1_ReadObserveTxRegister -Reads the OBSERVE_TX register to return the count of loss packets and count of retransmitted 
+                packets.
+   - RF1_ReadReceivedPowerDetector -Reads the RPD (Received Power Detector) register.
+   - RF1_SetChannel -Sets the radio channel (RF_CH register).
+   - RF1_GetChannel -Returns the radio channel (RF_CH register).
+   - RF1_ConstantCarrierWave -Put the transceiver into contant carrier wave output for testing. The output power of a radio is 
+                a critical factor for achieving wanted range. Output power is also the first test
+   - RF1_SetOutputPower -Sets the output power
+   - RF1_GetOutputPower -Returns the current output power
+   - RF1_SetDataRate -Sets the data rate
+   - RF1_GetDataRate -Returns the current data rate
+   - RF1_GetFifoStatus -Returns the FIFO_STATUS register value
+   - RF1_PollInterrupt -If there is no interrupt line available, this method polls the device to check if there is an interrupt.
+                If
+   - RF1_Deinit -Driver deinitialization
+   - RF1_Init -Initialization method
+
+Module "SM1"       (component SynchroMaster)
+   - SM1_Enable -Enable the component - it starts send and receive functions. Events may be generated 
+                ("DisableEvent"/"EnableEvent"). This method cannot be disabled if the Fault mode is enabled. It's intended for 
+                re-enabling the module if fault occurred. For more information please see the <"Fault mode" >property .
+   - SM1_Disable -Disable the component - it stops the send and receive functions. No events will be generated. Note: When this 
+                method is called while a transmission is in progress, the data being transmitted/received may be lost.
+   - SM1_RecvChar -If any data is received, this method returns one character, otherwise it returns an error code (it does not 
+                wait for data).   For information about SW overrun behavior please see <General info page>.
+   - SM1_SendChar -Sends one character to the channel.
+   - SM1_RecvBlock -If any data received, this method returns the block of the data and its length (and incidental error), 
+                otherwise it returns error code (it does not wait for data).  If less than requested number of characters is 
+                received only the available data is copied from the receive buffer to the user specified destination and the 
+                ERR_EXEMPTY value is returned.  This method is available only if non-zero length of input buffer is defined.    
+                For information about SW overrun behavior please see <General info page>.
+   - SM1_SendBlock -Send a block of characters to the channel. This method is only available if a non-zero length of output 
+                buffer is defined.
+   - SM1_ClearRxBuf -Clears the receive buffer. This method is available only if a non-zero length of input buffer is defined.
+   - SM1_ClearTxBuf -Clears the transmit buffer. This method is only available if a non-zero length of output buffer is defined.
+   - SM1_CharsInRxBuf -Returns the number of characters in the input buffer.  Note: If the Interrupt service is disabled, and 
+                the Ignore empty character is set to yes, and a character has been received, then this method returns 1 
+                although it was an empty character.  (deprecated method - Use the GetCharsInRxBuf method instead!)
+   - SM1_GetCharsInRxBuf -Returns the number of characters in the input buffer.  Note: If the Interrupt service is disabled, 
+                and the Ignore empty character is set to yes, and a character has been received, then this method returns 1 
+                although it was an empty character.
+   - SM1_CharsInTxBuf -Returns the number of characters in the output buffer.  (deprecated method - Use the GetCharsInRxBuf 
+                method instead!)
+   - SM1_GetCharsInTxBuf -Returns the number of characters in the output buffer.
+   - SM1_SetBaudRateMode -This method changes the channel communication speed (baud rate). This method is available only if you 
+                specify a list of possible period settings at design time (see <Timing dialog box> - Runtime setting - from a 
+                list of values). Each of these settings constitutes a _/mode/_ and Processor Expert assigns them a _/mode 
+                identifier/_. The prescaler and compare values corresponding to each mode are calculated at design time. You 
+                may switch modes at runtime by referring only to a mode identifier. No run-time calculations are performed, all 
+                the calculations are performed at design time.
+   - SM1_SetShiftClockPolarity -Sets the shift clock polarity at runtime. Output data will be shifted on the selected edge 
+                polarity. The method will disable communication (if enabled), change the shift clock polarity end re-enable the 
+                communication (if it was enabled before).
+   - SM1_SetIdleClockPolarity -Sets the idle clock polarity at runtime. If the communication does not run, the clock signal 
+                will have required level. The method will disable communication (if enabled), change the idle clock polarity 
+                end re-enable the communication (if it was enabled before).
+   - SM1_GetError -Returns a set of errors on the channel (errors that cannot be returned in given methods). The component 
+                accumulates errors in a set; after calling [GetError] this set is returned and cleared. This method is 
+                available only if the "Interrupt service/event" property is enabled.
+
 Module "Cpu"       (component MK22FN1M0LQ12)
 
 ===================================================================================

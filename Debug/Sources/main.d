@@ -62,6 +62,27 @@ Sources/main.o: ../Sources/main.c \
  /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/queue.h \
  /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/event_groups.h \
  /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/timers.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RNET1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RF1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CE1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd20.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CSN1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd21.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SM1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SMasterLdd1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Static_Code/PDD/SPI_PDD.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/IRQ1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/ExtIntLdd2.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/FRTOS1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RF1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CE1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd20.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CSN1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd21.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/IRQ1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/ExtIntLdd2.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SM1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SMasterLdd1.h \
  /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RTT1.h \
  /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SYS1.h \
  /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/LED_IR.h \
@@ -265,6 +286,48 @@ Sources/main.o: ../Sources/main.c \
 /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/event_groups.h:
 
 /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/timers.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RNET1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RF1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CE1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd20.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CSN1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd21.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SM1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SMasterLdd1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Static_Code/PDD/SPI_PDD.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/IRQ1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/ExtIntLdd2.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/FRTOS1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RF1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CE1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd20.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/CSN1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/BitIoLdd21.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/IRQ1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/ExtIntLdd2.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SM1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/SMasterLdd1.h:
 
 /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Generated_Code/RTT1.h:
 

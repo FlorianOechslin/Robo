@@ -8,7 +8,7 @@
 **     Repository  : Kinetis
 **     Datasheet   : K22P144M100SF5RM, Rev.2, Apr 2013
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2016-04-26, 08:43, # CodeGen: 6
+**     Date/Time   : 2016-05-02, 11:24, # CodeGen: 12
 **     Abstract    :
 **
 **     Settings    :
@@ -375,6 +375,16 @@
 #include "IR6.h"
 #include "BitIoLdd14.h"
 #include "FRTOS1.h"
+#include "RNET1.h"
+#include "RF1.h"
+#include "CE1.h"
+#include "BitIoLdd20.h"
+#include "CSN1.h"
+#include "BitIoLdd21.h"
+#include "IRQ1.h"
+#include "ExtIntLdd2.h"
+#include "SM1.h"
+#include "SMasterLdd1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -477,10 +487,11 @@ void __init_hardware(void)
                 SIM_CLKDIV1_OUTDIV2(0x01) |
                 SIM_CLKDIV1_OUTDIV3(0x03) |
                 SIM_CLKDIV1_OUTDIV4(0x03); /* Set the system prescalers to safe value */
-  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTC=1,PORTA=1 */
+  /* SIM_SCGC5: PORTE=1,PORTD=1,PORTC=1,PORTB=1,PORTA=1 */
   SIM_SCGC5 |= SIM_SCGC5_PORTE_MASK |
                SIM_SCGC5_PORTD_MASK |
                SIM_SCGC5_PORTC_MASK |
+               SIM_SCGC5_PORTB_MASK |
                SIM_SCGC5_PORTA_MASK;   /* Enable clock gate for ports to enable pin routing */
   if ((PMC_REGSC & PMC_REGSC_ACKISO_MASK) != 0x0U) {
     /* PMC_REGSC: ACKISO=1 */
@@ -633,6 +644,8 @@ void PE_low_level_init(void)
                 ));
   /* GPIOA_PDDR: PDD&=~0x4000 */
   GPIOA_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x4000));
+  /* GPIOB_PDDR: PDD&=~2 */
+  GPIOB_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x02));
   /* ### BitIO_LDD "BitIoLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)BitIoLdd1_Init(NULL);
   /* ### BitIO_LDD "BitIoLdd2" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
@@ -713,6 +726,17 @@ void PE_low_level_init(void)
   SIM_PDD_SetClockGate(SIM_BASE_PTR, SIM_PDD_CLOCK_GATE_LPTMR0, PDD_ENABLE);
 #endif
   vPortStopTickTimer(); /* tick timer shall not run until the RTOS scheduler is started */
+  /* ### SynchroMaster "SM1" init code ... */
+  SM1_Init();
+  /* ### BitIO_LDD "BitIoLdd20" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd20_Init(NULL);
+  /* ### BitIO_LDD "BitIoLdd21" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)BitIoLdd21_Init(NULL);
+  /* ### ExtInt_LDD "ExtIntLdd2" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)ExtIntLdd2_Init(NULL);
+  /* ### nRF24L01 "RF1" init code ... */
+  /* ### RNet "RNET1" init code ... */
+  /* Write code here ... */
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

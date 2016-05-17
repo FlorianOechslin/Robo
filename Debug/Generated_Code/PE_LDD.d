@@ -50,7 +50,13 @@ Generated_Code/PE_LDD.o: ../Generated_Code/PE_LDD.c \
  ../Generated_Code/IR6.h ../Generated_Code/BitIoLdd14.h \
  ../Generated_Code/FRTOS1.h ../Generated_Code/semphr.h \
  ../Generated_Code/queue.h ../Generated_Code/event_groups.h \
- ../Generated_Code/timers.h
+ ../Generated_Code/timers.h ../Generated_Code/RNET1.h \
+ ../Generated_Code/RF1.h ../Generated_Code/CE1.h \
+ ../Generated_Code/BitIoLdd20.h ../Generated_Code/CSN1.h \
+ ../Generated_Code/BitIoLdd21.h ../Generated_Code/SM1.h \
+ ../Generated_Code/SMasterLdd1.h \
+ /Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Static_Code/PDD/SPI_PDD.h \
+ ../Generated_Code/IRQ1.h ../Generated_Code/ExtIntLdd2.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -241,3 +247,25 @@ Generated_Code/PE_LDD.o: ../Generated_Code/PE_LDD.c \
 ../Generated_Code/event_groups.h:
 
 ../Generated_Code/timers.h:
+
+../Generated_Code/RNET1.h:
+
+../Generated_Code/RF1.h:
+
+../Generated_Code/CE1.h:
+
+../Generated_Code/BitIoLdd20.h:
+
+../Generated_Code/CSN1.h:
+
+../Generated_Code/BitIoLdd21.h:
+
+../Generated_Code/SM1.h:
+
+../Generated_Code/SMasterLdd1.h:
+
+/Users/Florian/Desktop/Studium/6.Semester/INTRO/KDS/Robo/Static_Code/PDD/SPI_PDD.h:
+
+../Generated_Code/IRQ1.h:
+
+../Generated_Code/ExtIntLdd2.h:
